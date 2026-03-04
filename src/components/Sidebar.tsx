@@ -1,6 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { History, LayoutDashboard, CheckSquare, Sparkles } from "lucide-react";
+import { Avatar } from "@geenius-ui/react-css";
 import ThemeToggle from "./ThemeToggle";
+
 export default function Sidebar() {
     const loc = useLocation();
     const links = [
@@ -22,7 +24,7 @@ export default function Sidebar() {
         </nav>
         <div style={{ padding: "var(--space-4)", borderTop: "1px solid var(--color-border)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
-                <img src="https://i.pravatar.cc/100?img=3" alt="Avatar" style={{ width: 36, height: 36, borderRadius: "50%" }} />
+                <Avatar fallback="MN" size="sm" src="https://i.pravatar.cc/100?img=3" />
                 <div style={{ fontWeight: 600, fontSize: "13px" }}>Mehdi</div>
             </div>
             <ThemeToggle />

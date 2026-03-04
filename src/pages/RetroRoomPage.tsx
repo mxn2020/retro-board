@@ -1,4 +1,5 @@
-import { Plus, ThumbsUp, MessageCircle, Settings, Users } from "lucide-react";
+import { Plus, ThumbsUp, MessageCircle, Settings, Users, ArrowRight } from "lucide-react";
+import { Button, Avatar } from "@geenius-ui/react-css";
 
 export default function RetroRoomPage() {
     const columns = [
@@ -32,8 +33,8 @@ export default function RetroRoomPage() {
             </div>
             <div style={{ display: "flex", gap: "var(--space-3)", alignItems: "center" }}>
                 <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--color-text-secondary)" }}>Stage: <strong style={{ color: "var(--color-text-primary)" }}>Voting</strong></span>
-                <button className="btn btn-primary btn-sm">Next Phase <ArrowRight size={14} /></button>
-                <button className="btn btn-ghost" style={{ padding: 6 }}><Settings size={18} /></button>
+                <Button variant="primary" size="sm">Next Phase <ArrowRight size={14} /></Button>
+                <Button variant="ghost" icon={<Settings size={18} />} />
             </div>
         </div>
 
@@ -42,7 +43,7 @@ export default function RetroRoomPage() {
                 <div key={col.title} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
                     <h2 style={{ fontSize: "16px", fontWeight: 700, textAlign: "center", paddingBottom: "var(--space-2)", borderBottom: "2px solid var(--color-border)" }}>{col.title} ({col.items.length})</h2>
 
-                    <button className="btn" style={{ width: "100%", padding: "12px", background: "var(--color-bg-card)", color: "var(--color-text-tertiary)", borderStyle: "dashed" }}><Plus size={16} /> Add Card</button>
+                    <Button variant="outline" icon={<Plus size={16} />} className="retro-add-card">Add Card</Button>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", overflowY: "auto", paddingBottom: "var(--space-6)" }}>
                         {col.items.map((item, i) => (
@@ -50,12 +51,12 @@ export default function RetroRoomPage() {
                                 <p style={{ fontSize: "15px", fontWeight: 500, lineHeight: 1.4, marginBottom: "var(--space-4)", color: "var(--color-text-primary)" }}>{item.text}</p>
                                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                                     <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-                                        <button className="btn btn-sm" style={{ background: "var(--color-bg-card)", border: "none", boxShadow: "0 1px 2px rgba(0,0,0,0.1)", display: "flex", alignItems: "center", gap: 6, fontWeight: 700 }}>
-                                            <ThumbsUp size={12} style={{ color: "var(--color-text-tertiary)" }} /> {item.votes > 0 ? item.votes : ""}
-                                        </button>
-                                        <button className="btn btn-sm btn-ghost" style={{ padding: 4, color: "var(--color-text-tertiary)" }}><MessageCircle size={14} /></button>
+                                        <Button variant="outline" size="sm">
+                                            <ThumbsUp size={12} /> {item.votes > 0 ? item.votes : ""}
+                                        </Button>
+                                        <Button variant="ghost" size="sm" icon={<MessageCircle size={14} />} />
                                     </div>
-                                    {item.author && <div style={{ width: 24, height: 24, borderRadius: "50%", background: "var(--color-bg-tertiary)", color: "var(--color-text-secondary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, border: "2px solid var(--color-bg-card)" }}>{item.author}</div>}
+                                    {item.author && <Avatar fallback={item.author} size="sm" />}
                                 </div>
                             </div>
                         ))}
@@ -65,6 +66,3 @@ export default function RetroRoomPage() {
         </div>
     </div>);
 }
-
-// Ensure ArrowRight is imported in retro room too
-const ArrowRight = require("lucide-react").ArrowRight;

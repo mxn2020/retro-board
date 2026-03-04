@@ -1,4 +1,5 @@
 import { CheckCircle2, Circle, Clock } from "lucide-react";
+import { Button, Card, Select, SelectItem } from "@geenius-ui/react-css";
 
 export default function ActionTrackerPage() {
     const actions = [
@@ -11,18 +12,18 @@ export default function ActionTrackerPage() {
     return (<div style={{ padding: "var(--space-6)", maxWidth: 900, margin: "0 auto" }}>
         <h1 style={{ fontSize: "var(--font-size-xl)", fontWeight: 700, marginBottom: "var(--space-6)" }}>Action Item Tracker</h1>
 
-        <div className="card" style={{ overflow: "hidden" }}>
+        <Card padding="none">
             <div style={{ padding: "var(--space-3) var(--space-4)", background: "var(--color-bg-secondary)", borderBottom: "1px solid var(--color-border)", display: "flex", gap: "var(--space-2)" }}>
-                <button className="btn btn-sm" style={{ background: "var(--color-bg-card)", boxShadow: "var(--card-shadow)" }}>Active (2)</button>
-                <button className="btn btn-sm btn-ghost">Completed (2)</button>
+                <Button variant="outline" size="sm">Active (2)</Button>
+                <Button variant="ghost" size="sm">Completed (2)</Button>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column" }}>
                 {actions.map((a, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: "var(--space-4)", padding: "var(--space-4)", borderBottom: "1px solid var(--color-border)", background: a.status === "done" ? "var(--color-bg-primary)" : "var(--color-bg-card)" }}>
-                        <button className="btn-ghost" style={{ padding: 0, color: a.status === "done" ? "var(--color-success)" : "var(--color-text-tertiary)" }}>
+                        <Button variant="ghost" size="sm" style={{ padding: 0, color: a.status === "done" ? "var(--color-success)" : "var(--color-text-tertiary)" }}>
                             {a.status === "done" ? <CheckCircle2 size={24} /> : a.status === "in-progress" ? <Clock size={24} style={{ color: "var(--color-warning)" }} /> : <Circle size={24} />}
-                        </button>
+                        </Button>
                         <div style={{ flex: 1 }}>
                             <p style={{ fontSize: "15px", fontWeight: 600, color: a.status === "done" ? "var(--color-text-secondary)" : "var(--color-text-primary)", textDecoration: a.status === "done" ? "line-through" : "none" }}>{a.text}</p>
                             <div style={{ display: "flex", gap: "var(--space-4)", fontSize: "13px", color: "var(--color-text-tertiary)", marginTop: 4, fontWeight: 500 }}>
@@ -31,14 +32,14 @@ export default function ActionTrackerPage() {
                                 <span>Created: {a.date}</span>
                             </div>
                         </div>
-                        <select style={{ padding: "4px 8px", borderRadius: "var(--radius-sm)", border: "1px solid var(--color-border)", background: "var(--color-bg-secondary)", color: "var(--color-text-secondary)", fontSize: "13px", fontWeight: 600 }} defaultValue={a.status}>
-                            <option value="todo">To Do</option>
-                            <option value="in-progress">In Progress</option>
-                            <option value="done">Done</option>
-                        </select>
+                        <Select defaultValue={a.status} style={{ fontSize: "13px" }}>
+                            <SelectItem value="todo">To Do</SelectItem>
+                            <SelectItem value="in-progress">In Progress</SelectItem>
+                            <SelectItem value="done">Done</SelectItem>
+                        </Select>
                     </div>
                 ))}
             </div>
-        </div>
+        </Card>
     </div>);
 }
