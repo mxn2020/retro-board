@@ -1,5 +1,6 @@
-id: 0276808c-4c66-4d80-abc8-b2a2a5dbb55c
 name: retro-board
+project_scope: main
+project_type: standalone
 description: React + TypeScript + Vite
 tier: prototype
 lane: oss
@@ -9,5 +10,6 @@ stack: [typescript, react, convex, vite]
 repo: "https://github.com/mxn2020/retro-board"
 deploy_url: null
 last_active: 2026-02-25
-tags: []
-notes: 
+tags: [retrospective, agile, team, feedback, collaboration, scrum, tools]
+notes: null
+id: 0276808c-4c66-4d80-abc8-b2a2a5dbb55c
